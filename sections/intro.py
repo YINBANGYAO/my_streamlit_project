@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 def show_header():
     st.title("📱 2025 Smartphone Market Pulse")
@@ -8,8 +9,29 @@ def show_header():
     """)
 
 def show_sidebar_methodology():
+    # --- 1. Logo 区域 (新增) ---
+    # 创建两列，让 Logo 并排显示
+    col1, col2 = st.sidebar.columns(2)
+    
+    # 放置第一个 Logo
+    with col1:
+        # 建议检查文件是否存在，防止报错
+        if os.path.exists("assets/logo1.png"):
+            st.image("assets/logo1.png", use_container_width=True)
+        else:
+            st.warning("Logo1 missing")
+
+    # 放置第二个 Logo
+    with col2:
+        if os.path.exists("assets/logo2.png"):
+            st.image("assets/logo2.png", use_container_width=True)
+        else:
+            st.warning("Logo2 missing")
+
+    # --- 2. 原有标题与内容 ---
     st.sidebar.title("📱 2025 Market Pulse")
     st.sidebar.markdown("---")
+    
     with st.sidebar.expander("📊 项目方法论 (Methodology)"):
         st.markdown("""
         **Role: Data Analyst**
