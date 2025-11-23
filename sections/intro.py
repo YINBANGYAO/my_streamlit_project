@@ -9,22 +9,20 @@ def show_header():
     """)
 
 def show_sidebar_methodology():
-    # --- 1. Logo 区域 (新增) ---
-    # 创建两列，让 Logo 并排显示
+    # --- 1. Logo 区域 ---
     col1, col2 = st.sidebar.columns(2)
     
-    # 放置第一个 Logo
     with col1:
-        # 建议检查文件是否存在，防止报错
         if os.path.exists("assets/logo1.png"):
-            st.image("assets/logo1.png", use_container_width=True)
+            # 修改点：将 use_container_width 改为 use_column_width
+            st.image("assets/logo1.png", use_column_width=True)
         else:
             st.warning("Logo1 missing")
 
-    # 放置第二个 Logo
     with col2:
         if os.path.exists("assets/logo2.png"):
-            st.image("assets/logo2.png", use_container_width=True)
+            # 修改点：将 use_container_width 改为 use_column_width
+            st.image("assets/logo2.png", use_column_width=True)
         else:
             st.warning("Logo2 missing")
 
